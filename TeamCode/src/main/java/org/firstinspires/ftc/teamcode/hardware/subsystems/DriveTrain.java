@@ -14,20 +14,20 @@ public class DriveTrain {
 
     // 0 = Left
     // 1 = Right
-    public DcMotor dcMotors[] = new DcMotor[2];
+    public DcMotor    dcMotors[] = new DcMotor[2];
 
     private Telemetry telemetry;
 
-    public DriveTrain(HardwareMap hwd, Telemetry tel, String motorNames[], boolean reverse){
-        for(int i = 0; i< dcMotors.length; i++){
+    public DriveTrain(HardwareMap hwd, Telemetry tel, String motorNames[], boolean reverse) {
+        for (int i = 0; i < dcMotors.length; i++) {
             dcMotors[i] = hwd.dcMotor.get(motorNames[i]);
         }
-        if(!reverse){
-            dcMotors[2].setDirection(DcMotorSimple.Direction.REVERSE); // Set FrontRight
-            dcMotors[3].setDirection(DcMotorSimple.Direction.REVERSE); // Set BottomRight
-        }else{
-            dcMotors[0].setDirection(DcMotorSimple.Direction.REVERSE); // Set FrontLeft
-            dcMotors[1].setDirection(DcMotorSimple.Direction.REVERSE); // Set FrontRight
+        if (reverse) {
+            dcMotors[0].setDirection(DcMotorSimple.Direction.FORWARD);
+            dcMotors[1].setDirection(DcMotorSimple.Direction.REVERSE);
+        } else {
+            dcMotors[0].setDirection(DcMotorSimple.Direction.REVERSE);
+            dcMotors[1].setDirection(DcMotorSimple.Direction.FORWARD);
         }
 
         telemetry = tel;
@@ -36,10 +36,10 @@ public class DriveTrain {
         setMotorModes(DcMotor.RunMode.RUN_USING_ENCODER);
     }
 
-    public boolean isMotorBusy(){
+    public boolean isMotorBusy() {
         boolean isBusy = false;
-        for (DcMotor _motor : dcMotors){
-            if(_motor.isBusy()){
+        for (DcMotor _motor : dcMotors) {
+            if (_motor.isBusy()) {
                 isBusy = true;
             }
         }
@@ -47,26 +47,26 @@ public class DriveTrain {
         return isBusy;
     }
 
-    public void setMotorModes(DcMotor.RunMode mode){
-        for (DcMotor _motor : dcMotors){
+    public void setMotorModes(DcMotor.RunMode mode) {
+        for (DcMotor _motor : dcMotors) {
             _motor.setMode(mode);
         }
     }
 
-    public void setMotorBreak(DcMotor.ZeroPowerBehavior mode){
-        for (DcMotor _motor : dcMotors){
+    public void setMotorBreak(DcMotor.ZeroPowerBehavior mode) {
+        for (DcMotor _motor : dcMotors) {
             _motor.setZeroPowerBehavior(mode);
         }
     }
 
-    public void setLeftPower(double power){
+    public void setLeftPower(double power) {
         dcMotors[0].setPower(power);
     }
 
-    public void setRightPower(double power){
+    public void setRightPower(double power) {
         dcMotors[1].setPower(power);
     }
-    
+
     public void stopMotors() {
         for (DcMotor _motor : dcMotors) {
             _motor.setPower(0);

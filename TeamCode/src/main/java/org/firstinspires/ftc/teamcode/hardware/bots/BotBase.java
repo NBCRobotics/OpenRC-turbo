@@ -23,6 +23,7 @@ public abstract class BotBase {
     public Grabbers grabbers = null;
     public Lift lift = null;
     public JewelArm jewelArm = null;
+    public NavigationHardware
 
     public BotBase(HardwareMap hwd) {
         hardwareMap = hwd;

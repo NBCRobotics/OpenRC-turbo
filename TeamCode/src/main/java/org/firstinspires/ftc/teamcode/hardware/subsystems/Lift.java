@@ -11,12 +11,12 @@ import org.firstinspires.ftc.robotcore.external.Telemetry;
 
 public class Lift {
 
-    public DcMotor[] armMotors = new DcMotor[1];
+    public DcMotor[]  armMotors = new DcMotor[1];
 
     private Telemetry telemetry;
 
     public Lift(HardwareMap hwd, Telemetry tel, String[] motorNames, boolean reverse) {
-        for(int i=0;i<armMotors.length;i++){
+        for (int i = 0; i < armMotors.length; i++) {
             armMotors[i] = hwd.dcMotor.get(motorNames[i]);
             armMotors[i].setMode(DcMotor.RunMode.RUN_USING_ENCODER);
             armMotors[i].setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
@@ -31,10 +31,10 @@ public class Lift {
         telemetry = tel;
     }
 
-    public boolean isMotorBusy(){
+    public boolean isMotorBusy() {
         boolean isBusy = false;
-        for (DcMotor _motor : armMotors){
-            if(_motor.isBusy()){
+        for (DcMotor _motor : armMotors) {
+            if (_motor.isBusy()) {
                 isBusy = true;
             }
         }
@@ -42,19 +42,19 @@ public class Lift {
         return isBusy;
     }
 
-    public void setMotorModes(DcMotor.RunMode mode){
-        for (DcMotor _motor : armMotors){
+    public void setMotorModes(DcMotor.RunMode mode) {
+        for (DcMotor _motor : armMotors) {
             _motor.setMode(mode);
         }
     }
 
-    public void setMotorBreak(DcMotor.ZeroPowerBehavior mode){
-        for (DcMotor _motor : armMotors){
+    public void setMotorBreak(DcMotor.ZeroPowerBehavior mode) {
+        for (DcMotor _motor : armMotors) {
             _motor.setZeroPowerBehavior(mode);
         }
     }
 
-    public void setPower(double power){
+    public void setPower(double power) {
         for (DcMotor _motor : armMotors) {
             _motor.setPower(power);
         }

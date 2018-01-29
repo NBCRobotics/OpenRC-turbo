@@ -45,6 +45,7 @@ public class Shortround extends BotBase {
         grabbers = new Grabbers(hardwareMap, grabberNames, grabberOpenPositions, grabberClosedPositions, false);
         jewelArm = new JewelArm(hardwareMap, jewelArmName, JEWEL_UP, JEWEL_DOWN);
         lift = new Lift(hardwareMap, null, armMotorNames, false);
+        navigationHardware = new NavigationHardware(hwd, "imu");
     }
 
 

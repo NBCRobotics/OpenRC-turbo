@@ -141,7 +141,7 @@ public class VuforiaOpModeTest extends LinearOpMode {
     private void turnRight() throws InterruptedException {
         bot.driveTrain.setLeftPower(1);
         bot.driveTrain.setRightPower(-1);
-        sleep(500);
+        sleep(250);
         bot.driveTrain.stopMotors();
     }
 
