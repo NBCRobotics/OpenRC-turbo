@@ -33,6 +33,8 @@ public class Shortround extends BotBase {
     private double JEWEL_UP = 0.00;
     private double JEWEL_DOWN = 0.00;
     
+    private String imuName = "imu";
+    
     public Shortround(HardwareMap hwd) {
         super(hwd);
         P = 0.5;
@@ -45,7 +47,7 @@ public class Shortround extends BotBase {
         grabbers = new Grabbers(hardwareMap, grabberNames, grabberOpenPositions, grabberClosedPositions, false);
         jewelArm = new JewelArm(hardwareMap, jewelArmName, JEWEL_UP, JEWEL_DOWN);
         lift = new Lift(hardwareMap, null, armMotorNames, false);
-        navigationHardware = new NavigationHardware(hwd, "imu");
+        navigationHardware = new IMU(hwd, imuName);
     }
 
 
