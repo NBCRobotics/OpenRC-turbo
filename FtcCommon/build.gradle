@@ -2,7 +2,10 @@ apply plugin: 'com.android.library'
 
 android {
     compileSdkVersion 23
-
+    
+    lintOptions {
+        abortOnError false
+    }
 
     defaultConfig {
         minSdkVersion 19

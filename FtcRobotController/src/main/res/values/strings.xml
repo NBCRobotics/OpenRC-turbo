@@ -39,7 +39,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 <resources>
 
     <string name="app_name">FTC Robot Controller</string>
-
+    
     <!-- Menu -->
     <string name="inspection_mode_menu_item">Self Inspect</string>
     <string name="programming_mode_menu_item">Programming Mode</string>
@@ -50,7 +50,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
     <string name="configure_robot_menu_item">Configure Robot</string>
     <string name="about_menu_item">About</string>
     <string name="exit_menu_item">Exit</string>
-
+    <string name="field_menu_item">Field Position</string>
     <!-- Toast messages -->
     <string name="toastWifiConfigurationComplete">Configuration Complete</string>
     <string name="toastRestartingRobot">Restarting Robot</string>

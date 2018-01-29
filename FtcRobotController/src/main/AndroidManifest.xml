@@ -42,6 +42,13 @@
         <service
             android:name="com.qualcomm.ftccommon.FtcRobotControllerService"
             android:enabled="true"/>
+        
+        <!-- The FieldPositionUI -->
+        <activity
+            android:name="com.qualcomm.ftcrobotcontroller.FieldPositionActivity"
+            android:configChanges="orientation|screenSize"
+            android:label="Field"
+            android:launchMode="singleTask"/>
     </application>
 
 </manifest>
