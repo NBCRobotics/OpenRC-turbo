@@ -1,6 +1,8 @@
 package org.firstinspires.ftc.teamcode.tele;
 
-import org.firstinspires.ftc.teamcode.lib.auto.DogeAutoOpMode;
+import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
+
+import org.firstinspires.ftc.teamcode.lib.auto.OpenFTCAutoOpMode;
 import org.firstinspires.ftc.teamcode.lib.control.Controller;
 
 
@@ -8,7 +10,8 @@ import org.firstinspires.ftc.teamcode.lib.control.Controller;
  * Created by pranav on 1/27/2018.
  */
 
-public class MainTeleOp extends DogeAutoOpMode {
+@TeleOp(name="MainTeleOp", group="OpenFTCOpMode")
+public class MainTeleOp extends OpenFTCAutoOpMode {
 
     private double speed = 1.0;
 

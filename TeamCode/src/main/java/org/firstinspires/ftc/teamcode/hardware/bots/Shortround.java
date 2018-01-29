@@ -1,7 +1,6 @@
 package org.firstinspires.ftc.teamcode.hardware.bots;
 
 import com.qualcomm.robotcore.hardware.HardwareMap;
-import com.qualcomm.robotcore.util.Hardware;
 
 import org.firstinspires.ftc.teamcode.hardware.subsystems.*;
 
@@ -9,7 +8,7 @@ import org.firstinspires.ftc.teamcode.hardware.subsystems.*;
  * Created by 20Avva on 1/26/2018.
  */
 
-public class Shortround extends DogeBot {
+public class Shortround extends BotBase {
 
     private String leftDriveMotor = "leftDrive";
     private String rightDriveMotor = "rightDrive";

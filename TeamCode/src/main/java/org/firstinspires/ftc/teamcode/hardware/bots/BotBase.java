@@ -11,7 +11,7 @@ import org.firstinspires.ftc.teamcode.hardware.subsystems.Grabbers;
  * Created by 20Avva on 1/26/2018.
  */
 
-public abstract class DogeBot {
+public abstract class BotBase {
     public HardwareMap hardwareMap;
 
     public double P = 0.1;
@@ -24,7 +24,7 @@ public abstract class DogeBot {
     public Lift lift = null;
     public JewelArm jewelArm = null;
 
-    public DogeBot(HardwareMap hwd) {
+    public BotBase(HardwareMap hwd) {
         hardwareMap = hwd;
     }
 

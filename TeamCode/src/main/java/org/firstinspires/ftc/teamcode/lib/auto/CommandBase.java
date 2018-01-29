@@ -1,16 +1,16 @@
 package org.firstinspires.ftc.teamcode.lib.auto;
 
-import org.firstinspires.ftc.teamcode.hardware.bots.DogeBot;
+import org.firstinspires.ftc.teamcode.hardware.bots.BotBase;
 
 /**
  * Created by pranav on 1/27/2018.
  */
 
 public abstract class CommandBase {
-    public DogeBot bot;
-    public DogeAutoOpMode opMode;
+    public BotBase bot;
+    public OpenFTCAutoOpMode opMode;
     public boolean overrideLoop = false;
-    public CommandBase(DogeAutoOpMode opMode){
+    public CommandBase(OpenFTCAutoOpMode opMode){
         this.opMode = opMode;
         this.bot = opMode.bot;
     }

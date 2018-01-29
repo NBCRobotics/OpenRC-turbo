@@ -7,7 +7,7 @@ import com.qualcomm.ftcrobotcontroller.FieldPositonData;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 
 import org.firstinspires.ftc.teamcode.hardware.bots.Shortround;
-import org.firstinspires.ftc.teamcode.hardware.bots.DogeBot;
+import org.firstinspires.ftc.teamcode.hardware.bots.BotBase;
 
 import org.firstinspires.ftc.teamcode.lib.logging.UniLogger;
 
@@ -15,9 +15,9 @@ import org.firstinspires.ftc.teamcode.lib.logging.UniLogger;
  * Created by pranav on 1/27/2018.
  */
 
-public abstract class DogeAutoOpMode extends LinearOpMode {
+public abstract class OpenFTCAutoOpMode extends LinearOpMode {
 
-    public DogeBot bot;
+    public BotBase bot;
     public FieldPositonData.FieldPostion fieldPostion;
     public boolean useDogeCV;
     public int autoSpeed;
