@@ -16,7 +16,7 @@ import org.firstinspires.ftc.teamcode.ClosableVuforiaLocalizer;
 import org.firstinspires.ftc.teamcode.hardware.bots.Shortround;
 import org.firstinspires.ftc.teamcode.BuildConfig;
 
-@Autonomous(name = "Concept: VuMark Id", group = "Concept")
+@Autonomous(name = "VuforiaOpModeTest", group = "AutoOpMode")
 //@Disabled
 public class VuforiaOpModeTest extends LinearOpMode {
 
@@ -109,12 +109,6 @@ public class VuforiaOpModeTest extends LinearOpMode {
             requestOpModeStop();
         }
     }
-
-    /*
-        String format(OpenGLMatrix transformationMatrix) {
-            return (transformationMatrix != null) ? transformationMatrix.formatAsTransform() : "null";
-        }
-     */
 
 
     private void setMotorPower(double power) {

@@ -15,7 +15,7 @@ public abstract class CommandBase {
         this.bot = opMode.bot;
     }
     public void setOverrideLoop(boolean va){
-        overrideLoop = overrideLoop;
+        overrideLoop = va;
     }
 
 
