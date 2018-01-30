@@ -21,8 +21,8 @@ import org.firstinspires.ftc.teamcode.BuildConfig;
 public class VuforiaOpModeTest extends LinearOpMode {
 
     // public static final String TAG = "Vuforia VuMark Sample";
-    private ElapsedTime runtime = new ElapsedTime();
-    private Shortround bot = new Shortround(hardwareMap);
+    private ElapsedTime              runtime = new ElapsedTime();
+    private Shortround               bot     = new Shortround(hardwareMap);
     // private int slowTrig;
     // OpenGLMatrix lastLocation = null;
 
@@ -38,18 +38,20 @@ public class VuforiaOpModeTest extends LinearOpMode {
          * To start up Vuforia, tell it the view that we wish to use for camera monitor (on the RC phone);
          * If no camera monitor is desired, use the parameterless constructor instead (commented out below).
          */
-        int cameraMonitorViewId = hardwareMap.appContext.getResources().getIdentifier("cameraMonitorViewId", "id", hardwareMap.appContext.getPackageName());
+        int cameraMonitorViewId =
+                                  hardwareMap.appContext.getResources().getIdentifier("cameraMonitorViewId", "id",
+                                                                                      hardwareMap.appContext.getPackageName());
         VuforiaLocalizer.Parameters parameters = new VuforiaLocalizer.Parameters(cameraMonitorViewId);
         /*
          * OR...  Do Not Activate the Camera Monitor View, to save power
          * VuforiaLocalizer.Parameters parameters = new VuforiaLocalizer.Parameters();
-        */
+         */
 
         /*
          * License key
          */
         parameters.vuforiaLicenseKey = BuildConfig.VUFORIA_KEY; // References VUFROIA_KEY value in {project.root.dir}/TeamCode/vuforia.properties
-        
+
         /*
          * Using the back camera
          */
@@ -98,18 +100,16 @@ public class VuforiaOpModeTest extends LinearOpMode {
 
             if (vuMark == RelicRecoveryVuMark.LEFT) {
                 doTheRoutine(vuMark);
-            } else if (vuMark == RelicRecoveryVuMark.CENTER) {
-                doTheRoutine(vuMark);
-            } else if (vuMark == RelicRecoveryVuMark.RIGHT) {
-                doTheRoutine(vuMark);
             } else {
                 requestOpModeStop();
             }
+            
             telemetry.update();
 
             requestOpModeStop();
         }
     }
+
     /*
         String format(OpenGLMatrix transformationMatrix) {
             return (transformationMatrix != null) ? transformationMatrix.formatAsTransform() : "null";
@@ -123,18 +123,31 @@ public class VuforiaOpModeTest extends LinearOpMode {
     }
 
     private void driveToPosition(RelicRecoveryVuMark position) {
-        if (position == RelicRecoveryVuMark.LEFT) {
-            setMotorPower(1);
-            sleep(3500);
-            setMotorPower(0);
-        } else if (position == RelicRecoveryVuMark.CENTER) {
-            setMotorPower(1);
-            sleep(3000);
-            setMotorPower(0);
-        } else if (position == RelicRecoveryVuMark.RIGHT) {
-            setMotorPower(1);
-            sleep(2500);
-            setMotorPower(0);
+        switch (position) {
+            case LEFT:
+                setMotorPower(1);
+                sleep(3500);
+                setMotorPower(0);
+                break;
+
+            case CENTER:
+                setMotorPower(1);
+                sleep(3000);
+                setMotorPower(0);
+                break;
+
+            case RIGHT:
+                setMotorPower(1);
+                sleep(2500);
+                setMotorPower(0);
+                break;
+
+            case UNKNOWN:
+                setMotorPower(1);
+                sleep(3000);
+                setMotorPower(0);
+                break;
+
         }
     }
 

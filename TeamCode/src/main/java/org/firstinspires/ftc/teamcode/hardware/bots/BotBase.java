@@ -6,6 +6,7 @@ import org.firstinspires.ftc.teamcode.hardware.subsystems.JewelArm;
 import org.firstinspires.ftc.teamcode.hardware.subsystems.Lift;
 import org.firstinspires.ftc.teamcode.hardware.subsystems.DriveTrain;
 import org.firstinspires.ftc.teamcode.hardware.subsystems.Grabbers;
+import org.firstinspires.ftc.teamcode.hardware.subsystems.NavigationHardware;
 
 /**
  * Created by 20Avva on 1/26/2018.
@@ -23,7 +24,7 @@ public abstract class BotBase {
     public Grabbers grabbers = null;
     public Lift lift = null;
     public JewelArm jewelArm = null;
-    public NavigationHardware
+    public NavigationHardware navigationHardware = null;
 
     public BotBase(HardwareMap hwd) {
         hardwareMap = hwd;
