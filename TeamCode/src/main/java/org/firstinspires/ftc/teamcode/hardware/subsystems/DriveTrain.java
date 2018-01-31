@@ -1,14 +1,11 @@
 package org.firstinspires.ftc.teamcode.hardware.subsystems;
 
+import android.graphics.Color;
+
+import com.qualcomm.robotcore.hardware.ColorSensor;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.hardware.HardwareMap;
-
-import org.firstinspires.ftc.robotcore.external.Telemetry;
-
-/**
- * Created by 20Avva on 1/26/2018.
- */
 
 public class DriveTrain {
 
@@ -16,9 +13,11 @@ public class DriveTrain {
     // 1 = Right
     public DcMotor    dcMotors[] = new DcMotor[2];
 
-    private Telemetry telemetry;
+    public ColorSensor colorSensor;
 
-    public DriveTrain(HardwareMap hwd, Telemetry tel, String motorNames[], boolean reverse) {
+    public float[] hsvValues = new float[3];
+
+    public DriveTrain(HardwareMap hwd, String motorNames[], String colorSensorName, boolean reverse) {
         for (int i = 0; i < dcMotors.length; i++) {
             dcMotors[i] = hwd.dcMotor.get(motorNames[i]);
         }
@@ -30,10 +29,10 @@ public class DriveTrain {
             dcMotors[1].setDirection(DcMotorSimple.Direction.FORWARD);
         }
 
-        telemetry = tel;
-
         setMotorBreak(DcMotor.ZeroPowerBehavior.BRAKE);
         setMotorModes(DcMotor.RunMode.RUN_USING_ENCODER);
+
+        colorSensor = hwd.colorSensor.get(colorSensorName);
     }
 
     public boolean isMotorBusy() {
@@ -71,5 +70,19 @@ public class DriveTrain {
         for (DcMotor _motor : dcMotors) {
             _motor.setPower(0);
         }
+    }
+
+    public void lightOn() {
+        colorSensor.enableLed(true);
+    }
+
+    public void lightOff() {
+        colorSensor.enableLed(false);
+    }
+
+    public int getColor() {
+        Color.RGBToHSV(colorSensor.red() * 8, colorSensor.green() * 8, colorSensor.blue() * 8, hsvValues);
+
+        return Color.HSVToColor(hsvValues);
     }
 }

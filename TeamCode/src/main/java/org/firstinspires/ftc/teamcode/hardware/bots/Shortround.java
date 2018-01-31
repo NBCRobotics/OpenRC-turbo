@@ -44,10 +44,10 @@ public class Shortround extends BotBase {
         
         PID_THRESH = 1;
         
-        driveTrain = new DriveTrain(hardwareMap, null, driveMotorNames, false);
+        driveTrain = new DriveTrain(hardwareMap, driveMotorNames, "colorSensor", false);
         grabbers = new Grabbers(hardwareMap, grabberNames, grabberOpenPositions, grabberClosedPositions, false);
         jewelArm = new JewelArm(hardwareMap, jewelArmName, JEWEL_UP, JEWEL_DOWN);
-        lift = new Lift(hardwareMap, null, armMotorNames, false);
+        lift = new Lift(hardwareMap, armMotorNames, false);
         navigationHardware = new IMU(hwd, imuName);
     }
 

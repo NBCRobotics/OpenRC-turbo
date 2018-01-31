@@ -3,19 +3,11 @@ package org.firstinspires.ftc.teamcode.hardware.subsystems;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 
-import org.firstinspires.ftc.robotcore.external.Telemetry;
-
-/**
- * Created by 20Avva on 1/26/2018.
- */
-
 public class Lift {
 
     public DcMotor[]  armMotors = new DcMotor[1];
 
-    private Telemetry telemetry;
-
-    public Lift(HardwareMap hwd, Telemetry tel, String[] motorNames, boolean reverse) {
+    public Lift(HardwareMap hwd, String[] motorNames, boolean reverse) {
         for (int i = 0; i < armMotors.length; i++) {
             armMotors[i] = hwd.dcMotor.get(motorNames[i]);
             armMotors[i].setMode(DcMotor.RunMode.RUN_USING_ENCODER);
@@ -27,8 +19,6 @@ public class Lift {
         } else {
             armMotors[0].setDirection(DcMotor.Direction.FORWARD);
         }
-
-        telemetry = tel;
     }
 
     public boolean isMotorBusy() {

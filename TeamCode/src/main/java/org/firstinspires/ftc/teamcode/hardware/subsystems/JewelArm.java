@@ -1,5 +1,8 @@
 package org.firstinspires.ftc.teamcode.hardware.subsystems;
 
+import android.graphics.Color;
+
+import com.qualcomm.robotcore.hardware.ColorSensor;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 import com.qualcomm.robotcore.hardware.Servo;
 
@@ -12,6 +15,8 @@ public class JewelArm {
     public String name;
     public double UP_POS;
     public double DOWN_POS;
+
+    public float[] hsvValues = new float[3];
 
     public JewelArm(HardwareMap hwd, String servoName, double upPosition, double downPosition) {
         servo = hwd.servo.get(name);
