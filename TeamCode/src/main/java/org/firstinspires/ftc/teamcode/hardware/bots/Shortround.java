@@ -36,6 +36,8 @@ public class Shortround extends BotBase {
     
     private String imuName = "imu";
     
+    private String colorSensorName = "colorSensor";
+    
     public Shortround(HardwareMap hwd) {
         super(hwd);
         P = 0.5;
@@ -44,11 +46,12 @@ public class Shortround extends BotBase {
         
         PID_THRESH = 1;
         
-        driveTrain = new DriveTrain(hardwareMap, driveMotorNames, "colorSensor", false);
+        driveTrain = new DriveTrain(hardwareMap, driveMotorNames, colorSensorName, false);
         grabbers = new Grabbers(hardwareMap, grabberNames, grabberOpenPositions, grabberClosedPositions, false);
         jewelArm = new JewelArm(hardwareMap, jewelArmName, JEWEL_UP, JEWEL_DOWN);
         lift = new Lift(hardwareMap, armMotorNames, false);
         navigationHardware = new IMU(hwd, imuName);
+        detectors = new DogeCVDetectors(hwd);
     }
 
 

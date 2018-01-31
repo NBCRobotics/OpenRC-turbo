@@ -2,12 +2,7 @@ package org.firstinspires.ftc.teamcode.hardware.bots;
 
 import com.qualcomm.robotcore.hardware.HardwareMap;
 
-import org.firstinspires.ftc.teamcode.hardware.subsystems.JewelArm;
-import org.firstinspires.ftc.teamcode.hardware.subsystems.Lift;
-import org.firstinspires.ftc.teamcode.hardware.subsystems.DriveTrain;
-import org.firstinspires.ftc.teamcode.hardware.subsystems.Grabbers;
-import org.firstinspires.ftc.teamcode.hardware.subsystems.NavigationHardware;
-
+import org.firstinspires.ftc.teamcode.hardware.subsystems.*;
 /**
  * Created by 20Avva on 1/26/2018.
  */
@@ -25,6 +20,7 @@ public abstract class BotBase {
     public Lift lift = null;
     public JewelArm jewelArm = null;
     public NavigationHardware navigationHardware = null;
+    public DogeCVDetectors detectors = null;
 
     public BotBase(HardwareMap hwd) {
         hardwareMap = hwd;
