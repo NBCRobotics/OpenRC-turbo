@@ -41,7 +41,7 @@ public abstract class OpenFTCAutoOpMode extends LinearOpMode {
         UniLogger.Log("DOGE-AUTO", "Use DogeCV: " + useDogeCV);
 
         switch (currentConfig){
-            case "Shortround":
+            case "shortround":
                 UniLogger.Log("DOGE-AUTO", "Creating Shortround bot for OpModes");
                 bot = new Shortround(hardwareMap);
 

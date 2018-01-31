@@ -16,13 +16,14 @@ import org.firstinspires.ftc.teamcode.ClosableVuforiaLocalizer;
 import org.firstinspires.ftc.teamcode.hardware.bots.Shortround;
 import org.firstinspires.ftc.teamcode.BuildConfig;
 
+import org.firstinspires.ftc.teamcode.lib.auto.OpenFTCAutoOpMode;
+
 @Autonomous(name = "VuforiaOpModeTest", group = "AutoOpMode")
 //@Disabled
-public class VuforiaOpModeTest extends LinearOpMode {
+public class VuforiaOpModeTest extends OpenFTCAutoOpMode {
 
     // public static final String TAG = "Vuforia VuMark Sample";
     private ElapsedTime              runtime = new ElapsedTime();
-    private Shortround               bot     = new Shortround(hardwareMap);
     // private int slowTrig;
     // OpenGLMatrix lastLocation = null;
 
