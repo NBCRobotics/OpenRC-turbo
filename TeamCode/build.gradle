@@ -14,3 +14,7 @@ dependencies {
     implementation project(':DogeCVLib')
     implementation project(':openCVLibrary320')
 }
+android {
+    compileSdkVersion 23
+    buildToolsVersion '26.0.2'
+}
