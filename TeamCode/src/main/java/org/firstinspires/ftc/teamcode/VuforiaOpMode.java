@@ -1,4 +1,4 @@
-package org.firstinspires.ftc.teamcode.auto;
+package org.firstinspires.ftc.teamcode;
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
@@ -12,18 +12,15 @@ import org.firstinspires.ftc.robotcore.external.navigation.RelicRecoveryVuMark;
 import org.firstinspires.ftc.robotcore.external.navigation.VuforiaLocalizer;
 import org.firstinspires.ftc.robotcore.external.navigation.VuforiaTrackable;
 import org.firstinspires.ftc.robotcore.external.navigation.VuforiaTrackables;
-import org.firstinspires.ftc.teamcode.ClosableVuforiaLocalizer;
-import org.firstinspires.ftc.teamcode.hardware.bots.Shortround;
-import org.firstinspires.ftc.teamcode.BuildConfig;
 
-import org.firstinspires.ftc.teamcode.lib.auto.OpenFTCAutoOpMode;
-
-@Autonomous(name = "VuforiaOpModeTest", group = "AutoOpMode")
+@Autonomous(name = "Concept: VuMark Id", group = "Concept")
 //@Disabled
-public class VuforiaOpModeTest extends OpenFTCAutoOpMode {
+public class VuforiaOpMode extends LinearOpMode {
 
     // public static final String TAG = "Vuforia VuMark Sample";
-    private ElapsedTime              runtime = new ElapsedTime();
+    private ElapsedTime runtime = new ElapsedTime();
+    private DcMotor leftDrive, rightDrive, leftArm, rightArm;
+    private Servo leftServo, rightServo;
     // private int slowTrig;
     // OpenGLMatrix lastLocation = null;
 
@@ -34,24 +31,36 @@ public class VuforiaOpModeTest extends OpenFTCAutoOpMode {
 
         telemetry.addData("Status", "Initialized");
         telemetry.update();
+        //Configures the motors
+        leftDrive = configMotor("leftDrive");
+        rightDrive = configMotor("rightDrive");
+        leftArm = configMotor("leftArm");
+        rightArm = configMotor("rightArm");
+        leftServo = hardwareMap.get(Servo.class, "leftServo");
+        rightServo = hardwareMap.get(Servo.class, "rightServo");
+
+        leftDrive.setDirection(DcMotor.Direction.FORWARD);
+        rightDrive.setDirection(DcMotor.Direction.REVERSE);
+        rightArm.setDirection(DcMotor.Direction.FORWARD);
+        leftArm.setDirection(DcMotor.Direction.REVERSE);
+        leftServo.setDirection(Servo.Direction.REVERSE);
+        rightServo.setDirection(Servo.Direction.FORWARD);
 
         /*
          * To start up Vuforia, tell it the view that we wish to use for camera monitor (on the RC phone);
          * If no camera monitor is desired, use the parameterless constructor instead (commented out below).
          */
-        int cameraMonitorViewId =
-                                  hardwareMap.appContext.getResources().getIdentifier("cameraMonitorViewId", "id",
-                                                                                      hardwareMap.appContext.getPackageName());
+        int cameraMonitorViewId = hardwareMap.appContext.getResources().getIdentifier("cameraMonitorViewId", "id", hardwareMap.appContext.getPackageName());
         VuforiaLocalizer.Parameters parameters = new VuforiaLocalizer.Parameters(cameraMonitorViewId);
         /*
          * OR...  Do Not Activate the Camera Monitor View, to save power
          * VuforiaLocalizer.Parameters parameters = new VuforiaLocalizer.Parameters();
-         */
+        */
 
         /*
          * License key
          */
-        parameters.vuforiaLicenseKey = BuildConfig.VUFORIA_KEY; // References VUFROIA_KEY value in {project.root.dir}/TeamCode/vuforia.properties
+        parameters.vuforiaLicenseKey = "AYCFV6H/////AAAAmekk6YIrl0eXiv6v/NSJkjV9eTSHNlS21VtbOvMpT/DU+eSVKRogBQ23cQ+qHItgdLdAyG0XIKpVWBewwHog581BgoBEyhLGzhnxI/57o+CYFi372QAb8faGRN/tE22Pm9BTinccijuCDITIS/9W4mQeUOGOMIC5rB76NZPeNT20Oj65AaG2s5N90hvh2+5xeQ4nhW3w34eez9C3tmO8A9ErqPG+CfDgKPhGZmI7SkAGvUlfzQDFvxPNeK8nYpD3ZnBYq+jytcTR5ch9MjrE0Oqbp5m+RnUIDNC7fP/4JPZ8l5i4JP6dvF1MAhpeJcAU2dIP7umddnO1M/mOOCZNwBD1o1qUMWjXSkvtBFtTstNl";
 
         /*
          * Using the back camera
@@ -78,7 +87,7 @@ public class VuforiaOpModeTest extends OpenFTCAutoOpMode {
         runtime.reset();
         while (opModeIsActive()) {
 
-            bot.grabbers.openGrabbers();
+            setServoPos(0.25);
 
             /*
              * See if any of the instances of {@link relicTemplate} are currently visible.
@@ -101,70 +110,77 @@ public class VuforiaOpModeTest extends OpenFTCAutoOpMode {
 
             if (vuMark == RelicRecoveryVuMark.LEFT) {
                 doTheRoutine(vuMark);
+            } else if (vuMark == RelicRecoveryVuMark.CENTER) {
+                doTheRoutine(vuMark);
+            } else if (vuMark == RelicRecoveryVuMark.RIGHT) {
+                doTheRoutine(vuMark);
             } else {
                 requestOpModeStop();
             }
-            
             telemetry.update();
 
             requestOpModeStop();
         }
     }
+    /*
+        String format(OpenGLMatrix transformationMatrix) {
+            return (transformationMatrix != null) ? transformationMatrix.formatAsTransform() : "null";
+        }
+     */
+
+    private DcMotor configMotor(String motor) {
+        return hardwareMap.get(DcMotor.class, motor);
+    }
+
+    private void setServoPos(double pos) {
+        leftServo.setPosition(pos);
+        rightServo.setPosition(pos);
+    }
 
 
     private void setMotorPower(double power) {
-        bot.driveTrain.setLeftPower(power);
-        bot.driveTrain.setRightPower(power);
+        rightDrive.setPower(power);
+        leftDrive.setPower(power);
     }
 
-    private void driveToPosition(RelicRecoveryVuMark position) {
-        switch (position) {
-            case LEFT:
-                setMotorPower(1);
-                sleep(3500);
-                setMotorPower(0);
-                break;
-
-            case CENTER:
-                setMotorPower(1);
-                sleep(3000);
-                setMotorPower(0);
-                break;
-
-            case RIGHT:
-                setMotorPower(1);
-                sleep(2500);
-                setMotorPower(0);
-                break;
-
-            case UNKNOWN:
-                setMotorPower(1);
-                sleep(3000);
-                setMotorPower(0);
-                break;
-
+    private void driveToPosition(RelicRecoveryVuMark position) throws InterruptedException {
+        if (position == RelicRecoveryVuMark.LEFT) {
+            setMotorPower(1);
+            Thread.sleep(3500);
+            setMotorPower(0);
+        } else if (position == RelicRecoveryVuMark.CENTER) {
+            setMotorPower(1);
+            Thread.sleep(3000);
+            setMotorPower(0);
+        } else if (position == RelicRecoveryVuMark.RIGHT) {
+            setMotorPower(1);
+            Thread.sleep(2500);
+            setMotorPower(0);
         }
     }
 
     private void turnRight() throws InterruptedException {
-        bot.driveTrain.setLeftPower(1);
-        bot.driveTrain.setRightPower(-1);
-        sleep(250);
-        bot.driveTrain.stopMotors();
+        leftDrive.setPower(1);
+        rightDrive.setPower(-1);
+        Thread.sleep(500);
+        leftDrive.setPower(0);
+        rightDrive.setPower(0);
     }
 
     private void placeGlyphInBox() throws InterruptedException {
-        bot.driveTrain.setLeftPower(1);
-        bot.driveTrain.setRightPower(1);
-        sleep(250);
-        bot.driveTrain.stopMotors();
+        leftDrive.setPower(1);
+        rightDrive.setPower(1);
+        Thread.sleep(250);
+        leftDrive.setPower(0);
+        rightDrive.setPower(0);
     }
 
     private void getOutOfBox() throws InterruptedException {
-        bot.driveTrain.setLeftPower(-1);
-        bot.driveTrain.setRightPower(1);
-        sleep(100);
-        bot.driveTrain.stopMotors();
+        leftDrive.setPower(-1);
+        rightDrive.setPower(-1);
+        Thread.sleep(100);
+        leftDrive.setPower(0);
+        rightDrive.setPower(0);
     }
 
     private void doTheRoutine(RelicRecoveryVuMark vuMark) throws InterruptedException {
@@ -172,7 +188,7 @@ public class VuforiaOpModeTest extends OpenFTCAutoOpMode {
         turnRight();
         placeGlyphInBox();
         getOutOfBox();
-        bot.grabbers.closeGrabbers();
+        setServoPos(0);
     }
 
 }
