@@ -41,16 +41,26 @@ public class DogeCVDetectors {
         glyphDetector.downScaleFactor = 0.3;
         glyphDetector.speed = GlyphDetector.GlyphDetectionSpeed.SLOW;
         
+        //Init detectors, but do not enable them!
+        //If they are enabled, bad things will happen
         cryptoboxDetector.init(hwd.appContext, CameraViewDisplay.getInstance());
         glyphDetector.init(hwd.appContext, CameraViewDisplay.getInstance());
         jewelDetector.init(hwd.appContext, CameraViewDisplay.getInstance());
         
     }
     
+    /**
+     * To enable, use org.firstinspires.ftc.teamcode.hardware.subsystems.DogeCVDetectors#enable(DogeCVDetectors.detectors[index])
+     * see detectors[] for the index numbers
+     */
     public void enable(OpenCVPipeline detector) {
         detector.enable();
     }
     
+    /**
+     * To disable, use org.firstinspires.ftc.teamcode.hardware.subsystems.DogeCVDetectors#disable(DogeCVDetectors.detectors[index])
+     * see detectors[] for the index numbers
+     */
     public void disable(OpenCVPipeline detector) {
         detector.disable();
     }
