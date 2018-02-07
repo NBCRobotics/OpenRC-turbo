@@ -124,6 +124,8 @@ public class TeleOpMode2 extends OpMode {
         //int currentPos = (leftArm.getCurrentPosition() + rightArm.getCurrentPosition()) / 2;
         if (-gamepad2.left_stick_y == 0 || bot.lift.armMotors[1].getCurrentPosition() == startPos) { //|| (startPos == currentPos)) {
             stopArm();
+        }  else if (-gamepad2.left_stick_y < 0) {
+            armPower(-gamepad2.left_stick_y / 8);
         } else
             armPower(((-gamepad2.left_stick_y) / 4));
     }
