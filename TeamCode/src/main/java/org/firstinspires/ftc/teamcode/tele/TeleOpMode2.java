@@ -141,7 +141,7 @@ public class TeleOpMode2 extends OpMode {
 
     public void setStartPos() {
         try {
-            startPos = bot.lift.armMotors[1].getCurrentPosition();
+            startPos = bot.lift.armMotors[0].getCurrentPosition();
         } catch (NullPointerException n) {
             telemetry.addData("NULL POINTER EXCEPTION in setStartPos: ", n.getMessage());
             telemetry.addData("Stack Trace: ", n.getStackTrace());
