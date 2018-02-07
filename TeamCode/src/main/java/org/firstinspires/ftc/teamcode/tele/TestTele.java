@@ -67,7 +67,6 @@ public class TestTele extends OpMode {
         bot.lift.setPower(power);
     }
 
-
     //opens up the servos if the a button on gamepad2 is held
     public void servoRun() {
 
