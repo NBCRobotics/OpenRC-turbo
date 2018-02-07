@@ -49,4 +49,5 @@ public class Lift {
             _motor.setPower(power);
         }
     }
+
 }

@@ -49,4 +49,11 @@ public class Grabbers {
             servos[i].setPosition(0.3);
         }
     }
+
+    //OVERLOADED
+    public void clampGrabbers(double pos) {
+        for (int i = 0;i<servos.length;i++) {
+            servos[i].setPosition(pos);
+        }
+    }
 }
