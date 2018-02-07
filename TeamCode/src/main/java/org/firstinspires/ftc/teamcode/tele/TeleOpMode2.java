@@ -116,7 +116,7 @@ public class TeleOpMode2 extends OpMode {
             telemetry.addData("ERROR!!! Exception in setEncoderValues: ", e.getMessage());
             telemetry.addData("Stack Trace: ", e.getStackTrace());
         }
-        (bot.lift.armMotors[1].setTargetPosition(tarPos);
+            bot.lift.armMotors[1].setTargetPosition(tarPos);
         telemetry.addData("Motors: ", "Arm should move to position and freeze");
     }
 
