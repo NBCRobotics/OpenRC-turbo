@@ -1,0 +1,11 @@
+dependencies {
+    implementation project(':DogeCVLib')
+    implementation project(':openCVLibrary320')
+    implementation project(':FtcCommon')
+    implementation project(':FtcRobotController')
+    implementation project(':Hardware')
+    implementation project(':Inspection')
+    implementation project(':RobotCore')
+    implementation project(':TeamCode')
+    implementation project(':Turbo')
+}
