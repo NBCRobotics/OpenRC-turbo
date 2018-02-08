@@ -6,8 +6,6 @@ com.disnodeteam.dogecv.math
 com.google.blocks
 com.google.blocks.ftcrobotcontroller
 com.google.blocks.ftcrobotcontroller.runtime
-com.qualcomm.WirelessP2p
-com.qualcomm.analyticsmodule
 com.qualcomm.ftccommon
 com.qualcomm.ftccommon.configuration
 com.qualcomm.ftcrobotcontroller
@@ -27,7 +25,6 @@ com.qualcomm.hardware.microsoft
 com.qualcomm.hardware.modernrobotics
 com.qualcomm.hardware.modernrobotics.comm
 com.qualcomm.hardware.motors
-com.qualcomm.robotcore
 com.qualcomm.robotcore.eventloop
 com.qualcomm.robotcore.eventloop.opmode
 com.qualcomm.robotcore.exception
@@ -41,7 +38,6 @@ com.qualcomm.robotcore.robocol
 com.qualcomm.robotcore.robot
 com.qualcomm.robotcore.util
 com.qualcomm.robotcore.wifi
-org.corningrobotics.enderbots.endercv
 org.firstinspires.ftc.ftccommon.external
 org.firstinspires.ftc.ftccommon.internal
 org.firstinspires.ftc.robotcontroller.external.samples
@@ -77,11 +73,9 @@ org.firstinspires.ftc.teamcode.tele
 org.firstinspires.ftc.teamcode.testing
 org.firstinspires.ftc.testing
 org.firstinspires.inspection
-org.opencv
 org.opencv.android
 org.opencv.calib3d
 org.opencv.core
-org.opencv.engine
 org.opencv.features2d
 org.opencv.imgcodecs
 org.opencv.imgproc
