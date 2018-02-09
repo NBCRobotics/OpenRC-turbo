@@ -1,9 +1,9 @@
 apply plugin: 'java'
 
 task generateJavadoc(type:Exec) {
-    commandLine './/javadoc.sh'
+    commandLine './javadoc.sh'
 }
 
 task cleanJavadoc(type:Exec) {
-    commandLine './/clean.sh'
+    commandLine './clean.sh'
 }

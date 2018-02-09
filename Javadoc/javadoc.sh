@@ -7,4 +7,4 @@ files=$(find .. -name *.java | tr '\n' ' ')
 echo "              FOUND THESE FILES               "
 echo $files
 
-javadoc -d . $files
+javadoc -d javadoc/ $files
